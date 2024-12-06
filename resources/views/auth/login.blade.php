@@ -7,14 +7,14 @@
             <h3 class="mt-3 mb-3">ログイン</h3>
 
             <hr>
-            <form method="POST" action="route('login')">
+            <form method="POST" action="{{ route('login') }}">
                 @csrf
 
                 <div class="form-group">
                     <input id="email" type="email" class="form-control @error('email') is-involid @enderror samuraimart-login-input" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="メールアドレス">
 
                     @error('email')
-                    <span class="invalid-feedback" role="alert">
+                    <span class="involid-feedback" role="alert">
                         <strong>メールアドレスが正しくない可能性があります。</strong>
                     </span>
                     @enderror
