@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('content')
 <div class="row">
@@ -14,7 +14,7 @@
                         <div class="col-12">
                             <p class="samuraimart-product-label mt-2">
                                 {{$product->name}}<br>
-                                <label>¥{{$product-price}}</label>
+                                <label>¥{{$product->price}}</label>
                             </p>
                         </div>
                     </div>

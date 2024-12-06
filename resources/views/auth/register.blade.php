@@ -12,7 +12,7 @@
                 @csrf
 
                 <div class="form-group row">
-                    <label for="name" class="col-md-5 col-form-label text-md-left">氏名<span class="ml-1 samuraimart-require-inpu-label"><span class="samuraimart-require-text">必須</span></span></label>
+                    <label for="name" class="col-md-5 col-form-label text-md-left">氏名<span class="ml-1 samuraimart-require-input-label"><span class="samuraimart-require-input-label-text">必須</span></span></label>
 
                     <div class="col-md-7">
                         <input id="name" type="text" class="form-control @error('name') is-invalid @enderror samuraimart-login-input" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="侍 太郎">
@@ -26,7 +26,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="email" class="col-md-5 col-form-label text-md-left">メールアドレス<span class="ml-1samuraimart-require-input-label"><span class="samuraimart-require-input-label-text">必須</span></span></label>
+                    <label for="email" class="col-md-5 col-form-label text-md-left">メールアドレス<span class="ml-1 samuraimart-require-input-label"><span class="samuraimart-require-input-label-text">必須</span></span></label>
 
                     <div class="col-md-7">
                         <input id="email" type="text" class="form-control @error('email') is-invalid @enderror samuraimart-login-input" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="samurai@samurai.com">
@@ -66,7 +66,7 @@
                  <div class="form-group row">
                     <label for="password" class="col-md-5 col-form-label text-md-left">パスワード<span class="ml-1 samuraimart-require-input-label"><span class="samuraimart-require-input-label-text">必須</span></span></label>
 
-                    <div>
+                    <div class="col-md-7">
                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror samuraimart-login-input" name="password" required autocomplete="new-password">
 
                         @error('password')

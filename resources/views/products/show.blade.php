@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="d-flex justify-content-center">
-    <div class="row-w-75">
+    <div class="row w-75">
         <div class="col-5 offset-1">
             <img src="{{ asset('img/dummy.png') }}" class="w-100 img-fluid">
         </div>
@@ -19,6 +19,7 @@
                 <p class="d-flex align-itmes-end">
                     ¥{{$product->price}}(税込)
                 </p>
+                <hr>
             </div>
             @auth
             <form method="POST" class="m-3 align-items-end">
@@ -36,7 +37,7 @@
               <div class="row">
                   <div class="col-7">
                        <button type="submit" class="btn samuraimart-submit-button w-100">
-                          <i class="has fa-shopping-cart"></i>
+                          <i class="fas fa-shopping-cart"></i>
                           カートに追加
                        </button>
                   </div>
