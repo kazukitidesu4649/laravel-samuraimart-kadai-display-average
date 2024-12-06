@@ -12,6 +12,8 @@
 
          <!-- Font Awesome -->
          <script src="https://kit.fontawesome.com/572b6cd5b9.js" crossorigin="anonymous"></script>
+
+         <link rel="stylesheet" href="{{ asset('css/samuraimart.css') }}">
     </head>
     <body>
         <div id="app">
