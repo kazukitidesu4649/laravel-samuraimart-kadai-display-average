@@ -13,14 +13,19 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::paginate(15);
-        $categories = Category::all();
-        // 全カテゴリーデータの中から、大カテゴリのみを取得。unipue()により重複しているものは削除.
-        $major_category_names = Category::pluck('major_category_name')->unipue();
+        if ($request->category !== null) {
+            $products = Product::where('cateogry_id', $request->category)->paginate(15);
+            $total_count = Product::where('category_id', $request->category)->count();
+            $category = Category::find($request->category);
+        } else {
+            $products = Product::paginate(15);
+            $total_count = "";
+            $category = null;
+        }
 
-        return view('products.index', compact('products'));
+        return view('products.index', compact('products', 'category', 'categories','major_category_names', 'total_count'));
     }
 
     /**
