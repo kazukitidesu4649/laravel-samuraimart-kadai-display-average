@@ -15,7 +15,7 @@ class FavoriteController extends Controller
     }
 
     public function destroy($product_id)
-    {
+    {   // detachは、紐づいたレコードを削除する
         Auth::user()->favorite_products()->detach($product_id);
 
         return back();

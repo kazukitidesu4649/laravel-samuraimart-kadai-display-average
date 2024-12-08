@@ -42,7 +42,7 @@
                        </button>
                   </div>
                   <div class="col-5">
-                      @if (Auth::user()->favorite_products()->where('product_id, $product->id')->exists())
+                      @if (Auth::user()->favorite_products()->where('product.id, $product->id')->exists())
                           <a href="{{ route('favorites.destroy', $product->id) }}" class="btn samuraimart-favorite-button text-favorite w-100" onclick="event.preventDefault(); document.getElementById('favorites-destroy-form').submit();"></a>
                               <i class="fa fa-herat"></i>
                               お気に入り解除
