@@ -15,7 +15,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::paginate(15);
+        $categories = Category::all();
+        // 全カテゴリーデータの中から、大カテゴリのみを取得。unipue()により重複しているものは削除.
+        $major_category_names = Category::pluck('major_category_name')->unipue();
 
         return view('products.index', compact('products'));
     }
