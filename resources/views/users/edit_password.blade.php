@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-< class="container">
+<div class="container">
     <form method="POST" action="{{route('mypage.update_password')}}"></form>
       @csrf
       <input type="hidden" name="_method" value="PUT">
