@@ -74,7 +74,7 @@ class CartController extends Controller
         $user_shoppingcarts = DB::table('shoppingcart')->get();
         $number = DB::table('shoppingcart')->where('instance', Auth::user()->id)->count();
 
-        $count = %user_shoppingcarts->count();
+        $count = $user_shoppingcarts->count();
 
         $count += 1;
         $number += 1;
@@ -87,7 +87,7 @@ class CartController extends Controller
         foreach ($cart as $c) {
             $price_total += $c->qty * $c->price;
             $qty_total += $c->qty;
-            if($c-options->carriage) {
+            if($c->options->carriage) {
                 $has_carriage_cost = true;
             }
         }
@@ -96,18 +96,18 @@ class CartController extends Controller
             $price_total += env('CARRIAGE');
         }
 
-        Cart::instane(Auth::user()->id)->store($count);
+        Cart::instance(Auth::user()->id)->store($count);
 
         DB::table('shoppingcart')->where('instance', Auth::user()->id)
             ->where('number', null)
             ->update(
                 [
-                    'code' => substr(str_shuffle(1234567890abcdefghijklmnopqrstuvwxyz), 0, 10),
+                    'code' => substr(str_shuffle('1234567890abcdefghijklmnopqrstuvwxyz'), 0, 10),
                     'number' => $number,
                     'price_total' => $price_total,
                     'qty' => $qty_total,
                     'buy_flag' => true,
-                    'updated_at' => date("Y/m/d H:i:s"),
+                    'updated_at' => date("Y/m/d H:i:s")
                 ]
             );
 
