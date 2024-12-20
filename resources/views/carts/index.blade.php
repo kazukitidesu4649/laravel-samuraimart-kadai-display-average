@@ -72,10 +72,8 @@
               </div>
           </div>
 
-          <form method="post" action="{{route('carts.destroy')}}" class="d-flex justify-content-end mt-3">
-              @csrf
-              <input type="hidden" name="_method" value="DELETE">
-              <a href="{{route('top')}}" class="btn samuraimart-favorite-button border-dark text-dark mr-3">
+          <div class="d-flex justify-content-end mt-3"></div>
+          <a href="{{route('top')}}" class="btn samuraimart-favorite-button border-dark text-dark mr-3">
                   買い物を続ける
               </a>
               @if ($total > 0)
