@@ -104,7 +104,7 @@ class UserController extends Controller
         return view('users.cart_history_index', compact('billings', 'total'));
     }
 
-    public function cart_histroy_show(Request $request)
+    public function cart_history_show(Request $request)
     {
         $num = $request->num;
         $user_id = Auth::user()->id;
@@ -123,7 +123,7 @@ class UserController extends Controller
                     'price_total' => $cart_info->price_total,
                     'qty' => $cart_info->qty,
                     'buy_flag' => $cart_info->buy_flag,
-                    'updated_at' => $cart_info->update_at,
+                    'updated_at' => $cart_info->updated_at,
                 ]
                 );
 
