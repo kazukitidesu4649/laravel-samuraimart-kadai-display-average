@@ -24,11 +24,11 @@
                         {{ $recommend_product->name }}<br>
                         <!-- 平均スコアの計算 -->
                          @php
-                            $averageScore = $recommend_product->reviews->avg('score') ?? 0;
+                            $averageScore = round($recommend_product->reviews->avg('score') ?? 0 * 2);
                          @endphp
                         <div class="samuraimart-star-rating" data-rate="{{ $averageScore }}">
-                        {{ $averageScore }}<br>
-                        </div>
+                        {{ $averageScore }}
+                        </div><br>
                         <label>¥{{ $recommend_product->price }}</label>
                     </p>
                 </div>
@@ -40,6 +40,7 @@
           <h1>新着商品</h1>
           <a href="{{ route('products.index', ['sort'=>'id', 'direction'=>'desc']) }}">もっと見る</a>
         </div>
+        <div class="row">
         @foreach ($recently_products as $recently_product)
           <div class="col-3">
               <a href="{{ route('products.show', $recently_product) }}">
@@ -53,6 +54,13 @@
                   <div class="col-12">
                       <p class="samuraimart-product-label mt-2">
                           {{ $recently_product->name }}<br>
+                          <!-- 平均スコアの計算 -->
+                         @php
+                            $averageScore = round(($recently_product->reviews->avg('score') ?? 0) * 2) / 2;
+                         @endphp
+                        <div class="samuraimart-star-rating" data-rate="{{ $averageScore }}">
+                        {{ $averageScore }}
+                        </div><br>
                           <label>¥{{ $recently_product->price }}</label>
                       </p>
                   </div>
