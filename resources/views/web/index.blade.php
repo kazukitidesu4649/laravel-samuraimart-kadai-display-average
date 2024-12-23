@@ -22,6 +22,13 @@
                 <div class="col-12">
                     <p class="samuraimart-product-label mt-2">
                         {{ $recommend_product->name }}<br>
+                        <!-- 平均スコアの計算 -->
+                         @php
+                            $averageScore = $recommend_product->reviews->avg('score') ?? 0;
+                         @endphp
+                        <div class="samuraimart-star-rating" data-rate="{{ $averageScore }}">
+                        {{ $averageScore }}<br>
+                        </div>
                         <label>¥{{ $recommend_product->price }}</label>
                     </p>
                 </div>
