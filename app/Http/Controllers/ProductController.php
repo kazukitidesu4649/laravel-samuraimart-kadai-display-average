@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\MajorCategory;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facade\Auth;
 
@@ -80,7 +81,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        $reviews = $product->reviews()->get();
+        $reviews = Review::with('user')->where('product_id', $product->id)->get();
+
         
         return view('products.show', compact('product', 'reviews'));
     }

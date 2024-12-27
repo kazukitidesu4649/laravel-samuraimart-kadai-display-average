@@ -23,12 +23,11 @@
                     <p class="samuraimart-product-label mt-2">
                         {{ $recommend_product->name }}<br>
                         <!-- 平均スコアの計算 -->
-                         @php
-                            $averageScore = round($recommend_product->reviews->avg('score') ?? 0 * 2);
-                         @endphp
-                        <div class="samuraimart-star-rating" data-rate="{{ $averageScore }}">
-                        {{ $averageScore }}
-                        </div><br>
+                        @php
+                        $averageScore = round(($recommend_product->reviews->avg('score') ?? 0) * 2) / 2;
+                        @endphp
+                        <div class="samuraimart-star-rating" data-rate="{{ $averageScore }}"></div>
+                        <span class="samuraimart-rating-text">{{ $averageScore }}</span><br>
                         <label>¥{{ $recommend_product->price }}</label>
                     </p>
                 </div>
@@ -55,12 +54,11 @@
                       <p class="samuraimart-product-label mt-2">
                           {{ $recently_product->name }}<br>
                           <!-- 平均スコアの計算 -->
-                         @php
-                            $averageScore = round(($recently_product->reviews->avg('score') ?? 0) * 2) / 2;
-                         @endphp
-                        <div class="samuraimart-star-rating" data-rate="{{ $averageScore }}">
-                        {{ $averageScore }}
-                        </div><br>
+                          @php
+                        $averageScore = round(($recently_product->reviews->avg('score') ?? 0) * 2) / 2;
+                        @endphp
+                        <div class="samuraimart-star-rating" data-rate="{{ $averageScore }}"></div>
+                        <span class="samuraimart-rating-text">{{ $averageScore }}</span><br>
                           <label>¥{{ $recently_product->price }}</label>
                       </p>
                   </div>

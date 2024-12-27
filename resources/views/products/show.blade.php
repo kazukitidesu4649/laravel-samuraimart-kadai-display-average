@@ -16,7 +16,15 @@
                 <h1 class="">
                     {{$product->name}}
                 </h1>
-                <p class="">
+                 <!-- 平均スコアの計算 -->
+                 <p>
+                     @php
+                     $averageScore = round(($product->reviews->avg('score') ?? 0) * 2) / 2;
+                     @endphp
+                     <span class="samuraimart-star-rating" data-rate="{{ $averageScore }}"></span>
+                     {{ $averageScore }}
+                 </p>
+                </p><p class="">
                     {{$product->description}}
                 </p>
                 <hr>
@@ -75,6 +83,12 @@
         <div class="offset-1 col-11">
             <hr class="w-100">
             <h3 class="float-left">カスタマーレビュー</h3>
+             <!-- 平均スコアの計算 -->
+                @php
+                $averageScore = round(($product->reviews->avg('score') ?? 0) * 2) / 2;
+                @endphp
+                <div class="samuraimart-star-rating" data-rate="{{ $averageScore }}"></div>
+                <span class="samuraimart-rating-text">{{ $averageScore }}</span><br>
         </div>
 
         <div class="offset-1 col-10">
@@ -85,7 +99,9 @@
                         <h3 class="review-score-color">{{ str_repeat('⭐︎', $review->score) }}</h3>
                      <p class="h3">{{$review->title}}</p>
                      <p class="h3">{{$review->content}}</p>
-                     <label>{{$review->created_at}} {{$review->user->name}}</label>
+                     <label>
+                        {{$review->created_at}} {{$review->user->name ?? '不明なユーザー'}}
+                     </label>
                  </div>
                  @endforeach
              </div><br />
